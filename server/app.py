@@ -4,8 +4,6 @@ import os, time, requests
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-load_dotenv()
-
 app = Flask(__name__)
 CORS(app)
 
@@ -54,6 +52,6 @@ def convert():
         return jsonify({"amount": q.amount * fx, "rate": fx})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
-
 if __name__ == "__main__":
-    app.run(port=int(os.getenv("PORT", "8080")), host="0.0.0.0")
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
