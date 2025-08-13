@@ -1,0 +1,9 @@
+kivy==2.3.0
+requests
+pydantic
+python-dotenv
+supabase
+httpx
+babel
+schedule
+matplotlib

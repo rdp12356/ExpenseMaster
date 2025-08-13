@@ -1,0 +1,21 @@
+{
+  "app_title": "ExpenseMaster",
+  "sign_in": "Sign In",
+  "sign_up": "Create Account",
+  "email": "Email",
+  "password": "Password",
+  "full_name": "Full Name",
+  "verify_notice": "Please verify your email to continue.",
+  "add_expense": "Add Expense",
+  "amount": "Amount",
+  "currency": "Currency",
+  "note": "Note",
+  "category": "Category",
+  "total_this_month": "Total this month",
+  "settings": "Settings",
+  "base_currency": "Base Currency",
+  "language": "Language",
+  "logout": "Log out",
+  "save": "Save",
+  "invalid": "Invalid input"
+}

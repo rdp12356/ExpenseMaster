@@ -1,0 +1,21 @@
+{
+  "app_title": "Maître des Dépenses",
+  "sign_in": "Se connecter",
+  "sign_up": "Créer un compte",
+  "email": "E-mail",
+  "password": "Mot de passe",
+  "full_name": "Nom complet",
+  "verify_notice": "Veuillez vérifier votre e-mail pour continuer.",
+  "add_expense": "Ajouter une dépense",
+  "amount": "Montant",
+  "currency": "Devise",
+  "note": "Note",
+  "category": "Catégorie",
+  "total_this_month": "Total ce mois-ci",
+  "settings": "Paramètres",
+  "base_currency": "Devise de base",
+  "language": "Langue",
+  "logout": "Se déconnecter",
+  "save": "Enregistrer",
+  "invalid": "Entrée invalide"
+}

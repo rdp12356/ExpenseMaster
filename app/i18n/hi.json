@@ -1,0 +1,21 @@
+{
+  "app_title": "व्यय मास्टर",
+  "sign_in": "साइन इन",
+  "sign_up": "खाता बनाएं",
+  "email": "ईमेल",
+  "password": "पासवर्ड",
+  "full_name": "पूरा नाम",
+  "verify_notice": "कृपया जारी रखने के लिए अपना ईमेल सत्यापित करें।",
+  "add_expense": "व्यय जोड़ें",
+  "amount": "राशि",
+  "currency": "मुद्रा",
+  "note": "नोट",
+  "category": "श्रेणी",
+  "total_this_month": "इस महीने का कुल",
+  "settings": "सेटिंग्स",
+  "base_currency": "बेस मुद्रा",
+  "language": "भाषा",
+  "logout": "लॉग आउट",
+  "save": "सहेजें",
+  "invalid": "अमान्य इनपुट"
+}

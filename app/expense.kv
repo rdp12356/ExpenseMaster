@@ -1,0 +1,183 @@
+#:kivy 2.3.0
+#:import Window kivy.core.window.Window
+#:import Animation kivy.animation.Animation
+
+<PrimaryButton@Button>:
+    size_hint_y: None
+    height: dp(48)
+    background_normal: ''
+    background_color: (0.12,0.12,0.16,1)
+    color: (1,1,1,1)
+    canvas.before:
+        Color:
+            rgba: (0.18,0.18,0.24,1)
+        RoundedRectangle:
+            radius: [16,16,16,16]
+            size: self.size
+            pos: self.pos
+
+<Card@BoxLayout>:
+    size_hint_y: None
+    height: self.minimum_height
+    padding: dp(16)
+    spacing: dp(12)
+    canvas.before:
+        Color:
+            rgba: (0.10,0.10,0.14,0.98)
+        RoundedRectangle:
+            radius: [18,18,18,18]
+            size: self.size
+            pos: self.pos
+
+<Header@Label>:
+    font_size: '22sp'
+    bold: True
+    color: 1,1,1,1
+
+<Subtle@Label>:
+    color: 0.75,0.78,0.84,1
+    font_size: '14sp'
+
+<Chip@Button>:
+    size_hint: None, None
+    size: self.texture_size[0] + dp(16), dp(32)
+    font_size: '14sp'
+    background_normal: ''
+    background_color: 0,0,0,0
+    color: 0.85,0.9,1,1
+    canvas.before:
+        Color:
+            rgba: 0.18,0.2,0.28,1
+        RoundedRectangle:
+            radius: [12,12,12,12]
+            size: self.size
+            pos: self.pos
+
+ScreenManager:
+    id: sm
+
+<LoginScreen@Screen>:
+    name: 'login'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(24)
+        spacing: dp(16)
+        Label:
+            text: app.tr('app_title')
+            font_size: '28sp'
+            bold: True
+            size_hint_y: None
+            height: dp(48)
+        TextInput:
+            id: email
+            hint_text: app.tr('email')
+            multiline: False
+            size_hint_y: None
+            height: dp(48)
+        TextInput:
+            id: password
+            hint_text: app.tr('password')
+            password: True
+            multiline: False
+            size_hint_y: None
+            height: dp(48)
+        PrimaryButton:
+            text: app.tr('sign_in')
+            on_release: app.sign_in(email.text, password.text)
+        Chip:
+            text: 'Sign in with Google'
+            on_release: app.google_sign_in()
+        Chip:
+            text: app.tr('sign_up')
+            on_release: app.goto_signup()
+
+<SignupScreen@Screen>:
+    name: 'signup'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(24)
+        spacing: dp(12)
+        TextInput:id: full_name; hint_text: app.tr('full_name'); size_hint_y: None; height: dp(48)
+        TextInput:id: email; hint_text: app.tr('email'); size_hint_y: None; height: dp(48)
+        TextInput:id: password; hint_text: app.tr('password'); password: True; size_hint_y: None; height: dp(48)
+        PrimaryButton:
+            text: app.tr('sign_up')
+            on_release: app.sign_up(full_name.text, email.text, password.text)
+        Subtle:
+            text: app.tr('verify_notice')
+
+<HomeScreen@Screen>:
+    name: 'home'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(16)
+        spacing: dp(12)
+        Card:
+            orientation: 'vertical'
+            Label:
+                id: total_label
+                text: app.month_total_label()
+                size_hint_y: None
+                height: dp(36)
+                font_size: '20sp'
+                color: 0.95,0.98,1,1
+            ScrollView:
+                do_scroll_x: False
+                GridLayout:
+                    id: expense_list
+                    cols: 1
+                    size_hint_y: None
+                    height: self.minimum_height
+        Card:
+            spacing: dp(8)
+            size_hint_y: None
+            height: dp(64)
+            TextInput:
+                id: amount
+                hint_text: app.tr('amount')
+                input_filter: 'float'
+            Spinner:
+                id: currency
+                text: app.base_currency
+                values: app.currency_items()
+                size_hint_x: 0.55
+            TextInput:
+                id: note
+                hint_text: app.tr('note')
+            PrimaryButton:
+                text: app.tr('add_expense')
+                size_hint_x: 0.4
+                on_release: app.add_expense(amount.text, currency.text, note.text)
+
+<SettingsScreen@Screen>:
+    name: 'settings'
+    BoxLayout:
+        orientation: 'vertical'; padding: dp(16); spacing: dp(12)
+        Card:
+            Label:text: app.tr('settings')
+        Card:
+            Label:text: app.tr('base_currency')
+            TextInput:id: base_cur; text: app.base_currency; size_hint_y: None; height: dp(44)
+            PrimaryButton:text: app.tr('save'); on_release: app.update_base_currency(base_cur.text)
+        Card:
+            Label:text: app.tr('language')
+            TextInput:id: lang; text: app.locale; size_hint_y: None; height: dp(44)
+            PrimaryButton:text: app.tr('save'); on_release: app.update_locale(lang.text)
+        Chip:text: app.tr('logout'); on_release: app.logout()
+
+<ChartsScreen@Screen>:
+    name: 'charts'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(12)
+        spacing: dp(8)
+
+# Charts shortcut on HomeScreen footer
+<HomeScreen>:
+    BoxLayout:
+        size_hint_y: None
+        height: dp(56)
+        padding: dp(12)
+        PrimaryButton:
+            text: "Show Charts"
+            on_release: app.show_charts()

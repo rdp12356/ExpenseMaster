@@ -1,0 +1,1 @@
+# Build desktop executable with PyInstaller\nSee instructions inside.
