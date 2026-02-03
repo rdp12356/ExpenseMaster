@@ -24,6 +24,15 @@ Quick start (local development):
    pip install -r requirements.txt
    python main.py
 
+Vercel deployment (FX API):
+1) Ensure the CurrencyFreaks API key is available as a Vercel environment variable:
+   - CURRENCYFREAKS_API_KEY
+2) (Optional) Adjust cache TTL with CACHE_TTL_SECONDS.
+3) Deploy the repo to Vercel. The API will be available at:
+   - https://<your-vercel-domain>/health
+   - https://<your-vercel-domain>/rates?base=USD
+   - https://<your-vercel-domain>/convert
+
 Builds:
 - Android APK: use Buildozer with the included spec (edit if needed).
 - Windows EXE: use PyInstaller as per BUILD_DESKTOP.md
