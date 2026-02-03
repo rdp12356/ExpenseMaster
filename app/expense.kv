@@ -53,6 +53,38 @@
             size: self.size
             pos: self.pos
 
+<AppTextInput@TextInput>:
+    size_hint_y: None
+    height: dp(48)
+    padding: dp(12), dp(12)
+    background_normal: ''
+    background_active: ''
+    background_color: 0,0,0,0
+    foreground_color: 0.95,0.98,1,1
+    hint_text_color: 0.62,0.66,0.74,1
+    cursor_color: 0.95,0.98,1,1
+    canvas.before:
+        Color:
+            rgba: (0.16,0.17,0.22,1)
+        RoundedRectangle:
+            radius: [12,12,12,12]
+            size: self.size
+            pos: self.pos
+
+<AppSpinner@Spinner>:
+    size_hint_y: None
+    height: dp(48)
+    background_normal: ''
+    background_color: 0,0,0,0
+    color: 0.95,0.98,1,1
+    canvas.before:
+        Color:
+            rgba: (0.16,0.17,0.22,1)
+        RoundedRectangle:
+            radius: [12,12,12,12]
+            size: self.size
+            pos: self.pos
+
 ScreenManager:
     id: sm
 
@@ -62,25 +94,27 @@ ScreenManager:
         orientation: 'vertical'
         padding: dp(24)
         spacing: dp(16)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         Label:
             text: app.tr('app_title')
             font_size: '28sp'
             bold: True
             size_hint_y: None
             height: dp(48)
-        TextInput:
+        AppTextInput:
             id: email
             hint_text: app.tr('email')
             multiline: False
-            size_hint_y: None
-            height: dp(48)
-        TextInput:
+        AppTextInput:
             id: password
             hint_text: app.tr('password')
             password: True
             multiline: False
-            size_hint_y: None
-            height: dp(48)
         PrimaryButton:
             text: app.tr('sign_in')
             on_release: app.sign_in(email.text, password.text)
@@ -97,9 +131,15 @@ ScreenManager:
         orientation: 'vertical'
         padding: dp(24)
         spacing: dp(12)
-        TextInput:id: full_name; hint_text: app.tr('full_name'); size_hint_y: None; height: dp(48)
-        TextInput:id: email; hint_text: app.tr('email'); size_hint_y: None; height: dp(48)
-        TextInput:id: password; hint_text: app.tr('password'); password: True; size_hint_y: None; height: dp(48)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        AppTextInput:id: full_name; hint_text: app.tr('full_name'); multiline: False
+        AppTextInput:id: email; hint_text: app.tr('email'); multiline: False
+        AppTextInput:id: password; hint_text: app.tr('password'); password: True; multiline: False
         PrimaryButton:
             text: app.tr('sign_up')
             on_release: app.sign_up(full_name.text, email.text, password.text)
@@ -112,6 +152,12 @@ ScreenManager:
         orientation: 'vertical'
         padding: dp(16)
         spacing: dp(12)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         Card:
             orientation: 'vertical'
             Label:
@@ -132,16 +178,16 @@ ScreenManager:
             spacing: dp(8)
             size_hint_y: None
             height: dp(64)
-            TextInput:
+            AppTextInput:
                 id: amount
                 hint_text: app.tr('amount')
                 input_filter: 'float'
-            Spinner:
+            AppSpinner:
                 id: currency
                 text: app.base_currency
                 values: app.currency_items()
                 size_hint_x: 0.55
-            TextInput:
+            AppTextInput:
                 id: note
                 hint_text: app.tr('note')
             PrimaryButton:
@@ -153,15 +199,21 @@ ScreenManager:
     name: 'settings'
     BoxLayout:
         orientation: 'vertical'; padding: dp(16); spacing: dp(12)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         Card:
             Label:text: app.tr('settings')
         Card:
             Label:text: app.tr('base_currency')
-            TextInput:id: base_cur; text: app.base_currency; size_hint_y: None; height: dp(44)
+            AppTextInput:id: base_cur; text: app.base_currency; multiline: False
             PrimaryButton:text: app.tr('save'); on_release: app.update_base_currency(base_cur.text)
         Card:
             Label:text: app.tr('language')
-            TextInput:id: lang; text: app.locale; size_hint_y: None; height: dp(44)
+            AppTextInput:id: lang; text: app.locale; multiline: False
             PrimaryButton:text: app.tr('save'); on_release: app.update_locale(lang.text)
         Chip:text: app.tr('logout'); on_release: app.logout()
 
@@ -171,6 +223,12 @@ ScreenManager:
         orientation: 'vertical'
         padding: dp(12)
         spacing: dp(8)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
 
 # Charts shortcut on HomeScreen footer
 <HomeScreen>:
@@ -178,6 +236,12 @@ ScreenManager:
         size_hint_y: None
         height: dp(56)
         padding: dp(12)
+        canvas.before:
+            Color:
+                rgba: (0.08,0.09,0.12,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         PrimaryButton:
             text: "Show Charts"
             on_release: app.show_charts()
