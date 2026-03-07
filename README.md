@@ -9,3 +9,7 @@ ExpenseMaster is an open-source expense management system built with Python, Sup
 - Supabase authentication
 - Cloud deployment using Vercel
 - Database schema for financial records
+
+## Purpose
+
+This project serves as both a functional expense tracking system and a learning resource for developers exploring modern backend architectures using Python, Supabase, and cloud deployment platforms.
